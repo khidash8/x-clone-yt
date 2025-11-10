@@ -1,17 +1,12 @@
-## Getting Started
+## X-Clone | Followed | Lama Dev youtube channel
 
-First, run the development server:
+## Technologies used
+- Next.js 15
+- Tailwind CSS
+- TypeScript
+- React
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## pretiier plugins
+- @trivago/prettier-plugin-sort-imports
+- prettier-plugin-tailwindcss
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
