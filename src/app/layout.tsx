@@ -14,8 +14,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -26,6 +28,7 @@ export default function RootLayout({
           </div>
           <div className="flex-1 border-x-[1px] border-borderGray lg:min-w-[600px]">
             {children}
+            {modal}
           </div>
           <div className="ml-4 hidden flex-1 md:ml-8 lg:flex">
             <RightBar />
