@@ -120,7 +120,7 @@ const Post = async ({ type }: { type?: 'status' | 'comment' }) => {
               className={fileDetails.customMetadata?.sensitive ? "blur-lg" : ""}
             />
           ) : (
-            <Video
+            <IKVideo
               path={fileDetails.filePath}
               className={fileDetails.customMetadata?.sensitive ? "blur-lg" : ""}
             />
