@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { KImage as Image } from '@/components/Image';
 import PostInfo from '@/components/PostInfo';
 import PostInteractions from '@/components/PostInteractions';
+import { IKVideo } from '@/components/Video';
+import { imagekit } from '@/utils';
 
 interface FileDetailsResponse {
   width: number;
@@ -16,20 +18,20 @@ interface FileDetailsResponse {
 const Post = async ({ type }: { type?: 'status' | 'comment' }) => {
   // FETCH POST MEDIA
 
-  // const getFileDetails = async (
-  //   fileId: string
-  // ): Promise<FileDetailsResponse> => {
-  //   return new Promise((resolve, reject) => {
-  //     imagekit.getFileDetails(fileId, function (error, result) {
-  //       if (error) reject(error);
-  //       else resolve(result as FileDetailsResponse);
-  //     });
-  //   });
-  // };
+  const getFileDetails = async (
+    fileId: string,
+  ): Promise<FileDetailsResponse> => {
+    return new Promise((resolve, reject) => {
+      imagekit.getFileDetails(fileId, function (error, result) {
+        if (error) reject(error);
+        else resolve(result as FileDetailsResponse);
+      });
+    });
+  };
 
-  // const fileDetails = await getFileDetails("675d943be375273f6003858f");
+  const fileDetails = await getFileDetails('675d943be375273f6003858f');
 
-  // console.log(fileDetails);
+  console.log(fileDetails);
 
   return (
     <div className="border-y-[1px] border-borderGray p-4">
@@ -111,20 +113,20 @@ const Post = async ({ type }: { type?: 'status' | 'comment' }) => {
           </Link>
           <Image src="general/post.jpeg" alt="" width={600} height={600} />
           {/* AFTER FETCHING THE POST MEDIA */}
-          {/* {fileDetails && fileDetails.fileType === "image" ? (
+          {fileDetails && fileDetails.fileType === 'image' ? (
             <Image
               src={fileDetails.filePath}
               alt=""
-              width=fileDetails.width}
+              width={fileDetails.width}
               height={fileDetails.height}
-              className={fileDetails.customMetadata?.sensitive ? "blur-lg" : ""}
+              className={fileDetails.customMetadata?.sensitive ? 'blur-lg' : ''}
             />
           ) : (
             <IKVideo
               path={fileDetails.filePath}
-              className={fileDetails.customMetadata?.sensitive ? "blur-lg" : ""}
+              className={fileDetails.customMetadata?.sensitive ? 'blur-lg' : ''}
             />
-          )} */}
+          )}
           {type === 'status' && (
             <span className="text-textGray">8:41 PM · Dec 5, 2024</span>
           )}
